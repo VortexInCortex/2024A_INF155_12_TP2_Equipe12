@@ -1,0 +1,2 @@
+RAM : memoire vive a acces aleatoire.
+ROM : memoire morte.
