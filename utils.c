@@ -15,11 +15,16 @@
 //  Definition des fonctions publiques
 //  ----------------------------------
 char *utils_chaine_minuscules(char *chaine) {
-	// A completer
+    const int longeur_chaine = (int) strlen(chaine);
+
+    for (int indice = 0; indice < longeur_chaine; indice++)
+        chaine[indice] = (char) tolower(chaine[indice]);
+
+    return chaine;
 }
 
 char *utils_chaine_tailler(char *chaine) {
-	// A completer
+    return chaine;
 }
 
 char *utils_fichier_ligne_suivante(const char *nom_fichier) {
@@ -49,15 +54,15 @@ char *utils_fichier_ligne_suivante(const char *nom_fichier) {
 }
 
 void utils_chaine_decouper(char *ligne, char *expression, char *definition, const char *delimiteurs) {
-	// A completer
+    // A completer
 }
 
 void utils_chaine_premier_mot(const char *expression, char *mot) {
-	// A completer
+    // A completer
 }
 
 bool utils_saisir_oui_non() {
-	// A completer
+    // A completer
 }
 
 void utils_test() {
@@ -87,8 +92,8 @@ void utils_test() {
 
     //  utils_ligne_decouper
     char *decoupes[][2] = {
-            {"test",                  "Ceci est un fichier de test."},
-            {"chaine  de caracteres", "Une suite de caracteres terminee par le caractere '\\0'."}
+        {"test", "Ceci est un fichier de test."},
+        {"chaine  de caracteres", "Une suite de caracteres terminee par le caractere '\\0'."}
     };
     char mot_clef[MAX_CHAINE];
     char definition[MAX_CHAINE];
@@ -99,10 +104,12 @@ void utils_test() {
     }
 
     //  test utils_premier_mot
-    char *expressions[][2] = {{"langage",      "langage"},
-                              {"",             ""},
-                              {"bit de parie", "bit"},
-                              {"serveur DNS",  "serveur"}};
+    char *expressions[][2] = {
+        {"langage", "langage"},
+        {"", ""},
+        {"bit de parie", "bit"},
+        {"serveur DNS", "serveur"}
+    };
     for (int i = 0; i < sizeof(expressions) / sizeof(expressions[0]); i++) {
         utils_chaine_premier_mot(expressions[i][0], buffer);
         assert(strcmp(buffer, expressions[i][1]) == 0);

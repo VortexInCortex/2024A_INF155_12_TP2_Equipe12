@@ -22,7 +22,7 @@ void tests() {
 
     mon_rapport(true);
 
-    printf("Il devrait y avoit 1706 allocations/desallocations...\n");
+    printf("Il devrait y avoir 1706 allocations/desallocations...\n");
 }
 
 int main(void) {
