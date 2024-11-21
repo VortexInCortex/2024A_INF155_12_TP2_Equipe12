@@ -6,3 +6,4 @@
 *.log
 *.cmake
 /cmake-build-debug
+*.log
