@@ -27,6 +27,7 @@ void tests() {
 }
 
 int main(int argc, char **argv) {
+    tests();
     // if (argc != 2) {
     //     fprintf(stderr, "Usage : ./ChatBotV2 <nom fichier donnees>\n");
     //     fprintf(stderr, "        ./ChatBotV2 -debug\n");
