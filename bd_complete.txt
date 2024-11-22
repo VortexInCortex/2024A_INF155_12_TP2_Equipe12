@@ -1,0 +1,294 @@
+adresse mac : Identifiant unique assigne aux cartes reseau pour leur identification.
+aes : Algorithme de chiffrement symetrique pour la securisation des donnees.
+algebre de boole : Branche de l'algebre utilisee dans les circuits logiques.
+algorithme evolutif : Methode d'optimisation basee sur les principes de l'evolution.
+algorithme : Une suite d'instructions concues pour effectuer une tache specifique.
+analyse en temps reel : Evaluation immediate des donnees au moment de leur generation.
+analyse syntaxique : Processus de verification de la structure d'un code source.
+api : Interface permettant l'interaction entre differentes applications.
+ascii : Code standard de representation des caracteres en informatique.
+authentification basee sur certificat : Methode de verification de l'identite via un certificat numerique.
+authentification unique : Systeme permettant de se connecter une seule fois a plusieurs services.
+authentification multifactorielle : Methode de securisation utilisant plusieurs niveaux d'acces.
+authentification : Processus de verification de l'identite d'un utilisateur.
+automate : Systeme executant des taches automatiquement selon des regles definies.
+automl : Utilisation de l'intelligence artificielle pour creer des modeles ML.
+backdoor : Acces cache dans un systeme informatique permettant l'infiltration.
+backup en ligne : Copie des donnees sur un serveur distant pour securite.
+backup : Copie de donnees stockees pour eviter la perte d'informations.
+bande passante : Volume de donnees pouvant etre transmis sur un reseau en une seconde.
+barriere de securite : Systeme empechant les acces non autorises a un reseau.
+base de donnees relationnelle : Systeme structurant les donnees sous forme de tables.
+base : Structure organisee de donnees, souvent accessible par requete.
+big data : Ensemble de donnees volumineuses necessitant des techniques avancees d'analyse.
+bigtable : Base de donnees NoSQL a grande echelle de Google.
+binaire : Systeme de numerotation en base 2 utilise par les ordinateurs, compose de 0 et 1.
+bit : Plus petite unite de donnees en informatique, representant un 0 ou un 1.
+bitwise : Operations effectuees au niveau des bits.
+blockchain : Structure de donnees decentralisee pour gestion securisee d'informations.
+booleen : Type de donnee avec deux valeurs possibles, vrai ou faux.
+boot : Processus de demarrage d'un ordinateur.
+bruteforce : Methode de cryptanalyse testant toutes les combinaisons possibles.
+bug : Erreur ou dysfonctionnement dans un programme informatique.
+bytecode : Code intermediaire pour l'execution de programmes.
+cache : Memoire rapide stockant temporairement des donnees frequemment utilisees.
+calcul intensif : Traitement informatique qui necessite une puissance de calcul elevee.
+calcul distribue : Repartition de calculs sur plusieurs machines.
+capteur : Dispositif qui detecte des changements physiques dans l'environnement.
+capture de paquets : Technique d'analyse du trafic reseau en temps reel.
+carte graphique : Composant dedie au rendu d'images et de videos.
+cdn : Reseau de distribution de contenu, optimisant la diffusion de contenus web.
+centre de donnees : Installation regroupant les serveurs et l'equipement reseau.
+certificat numerique : Document electronique pour l'authentification et le chiffrement.
+chainage de blocs : Methode de stockage de donnees dans la blockchain de facon sequentielle.
+chatbot : Programme simulant une conversation avec un utilisateur humain.
+checksum : Valeur calculee pour verifier l'integrite des donnees.
+chiffrement homomorphe : Cryptographie permettant d'effectuer des calculs sur des donnees chiffre.
+chiffrement symetrique : Methode de cryptage utilisant la meme cle pour chiffrer et dechiffrer.
+cle de chiffrement : Code secret utilise pour crypter et decrypter les donnees.
+cle privee : Cle utilisee pour dechiffrer des messages dans la cryptographie asymetrique.
+cle publique : Cle utilisee pour chiffrer des messages dans la cryptographie asymetrique.
+cli : Interface en ligne de commande pour interagir avec le systeme.
+client leger : Terminal informatique qui depend d'un serveur pour ses operations.
+client : Ordinateur ou application accedant aux services d'un serveur.
+cloud : Fourniture de services informatiques via Internet.
+cluster : Ensemble de serveurs fonctionnant comme une unite unique.
+code source : Instructions ecrites par un programmeur pour un programme.
+colocation : Partage de ressources dans un centre de donnees par plusieurs clients.
+compilation : Transformation d'un code source en code executable.
+compiler : Programme qui convertit le code source en code machine.
+compression avec perte : Methode de reduction de la taille de fichier avec degradation.
+compression sans perte : Methode reduisant la taille des fichiers sans degradation.
+compression : Reduction de la taille des donnees pour economiser l'espace.
+concurrence : Execution simultanee de plusieurs taches dans un programme.
+conteneur : Environnement isole pour executer des logiciels sans interferences.
+conteneurisation : Enveloppement d'applications dans des environnements isoles.
+controle de conformite : Verification du respect des normes et standards dans un systeme.
+controle de flux : Regle qui gere le debit des paquets dans un reseau.
+controle d'integrite : Verification de la qualite et de l'exactitude des donnees.
+controle d'acces : Limitation de l'acces aux ressources selon des autorisations.
+cryptage : Transformation de donnees pour les rendre securisees.
+cryptanalyse : Etude des methodes permettant de casser des codes de cryptographie.
+crypto-monnaie : Monnaie numerique basee sur la cryptographie.
+cryptographie quantique : Methode de cryptographie utilisant des principes quantiques.
+cryptographie : Science de securisation des informations en les rendant illisibles sans cle.
+data mining : Extraction de connaissances a partir de grands volumes de donnees.
+data warehouse : Base de donnees centralisee pour le stockage de grandes quantites de donnees.
+data science : Domaine axe sur l'analyse de donnees pour obtenir des insights.
+datalake : Entrepot de donnees brutes permettant l'analyse de grands volumes d'information.
+debogage : Processus de detection et correction des erreurs dans un programme.
+deboguer : Action de supprimer les bogues d'un logiciel.
+debugger : Outil permettant de tester et corriger des erreurs de code.
+deep learning : Technique de machine learning basee sur les reseaux neuronaux profonds.
+defragmentation : Reorganisation de donnees pour optimiser l'espace de stockage.
+demande de securite : Requete pour acceder aux ressources d'un reseau en toute securite.
+demilitarized zone : Reseau de securite entre un reseau prive et un reseau public.
+devops : Methode combinant le developpement et les operations pour agilite accrue.
+devsecops : Methode DevOps avec des pratiques de securite integrees.
+digitalisation : Transformation des processus analogiques en numerique.
+directeur de flux : Gestionnaire du flux de donnees pour l'optimisation des ressources.
+disque : Support de stockage de donnees.
+dns cache : Memoire temporaire de resultats de requetes DNS pour accelerer les connexions.
+dns : Systeme qui convertit les noms de domaine en adresses IP.
+domaine : Nom symbolique attribue a une adresse IP dans un reseau.
+domotique : Technologie d'automatisation pour la gestion des dispositifs domestiques.
+donnee : Informations traitees ou stockees par un ordinateur.
+donnees brutes : Informations non structurees ou non traitees.
+driver : Logiciel permettant de controler des peripheriques materiels.
+edge computing : Traitement des donnees au plus pres de l'utilisateur pour minimiser la latence.
+empreinte numerique : Marque unique laissee par les interactions d'un utilisateur en ligne.
+emulateur : Logiciel imitant le comportement d'un autre systeme.
+encapsulation reseau : Insertion d'une trame reseau dans une autre trame pour la transmission.
+encapsulation : Technique OOP regroupant donnees et methodes manipulant ces donnees.
+encodage : Conversion de donnees dans un format specifique.
+encryption : Technique de securisation des donnees en les rendant illisibles sans cle.
+entier : Type de donnee numerique representant des nombres sans decimales.
+environnement de developpement : Ensemble d'outils et ressources pour coder et tester un logiciel.
+ethernet : Technologie permettant l'interconnexion d'ordinateurs dans un reseau local.
+execution : Processus d'execution des instructions d'un programme.
+extranet : Reseau prive etendu aux partenaires externes.
+faille zero-day : Vulnerabilite decouverte avant la creation d'un correctif.
+failover automatique : Basculement automatique vers un systeme de secours.
+failover : Systeme de secours en cas de defaillance du principal.
+fibre optique : Cables de verre ou de plastique transportant des donnees a haute vitesse.
+fibre : Cable utilise pour transmettre des donnees a haute vitesse.
+filtrage : Selection des donnees repondant a des criteres specifiques.
+firewall : Systeme de securite filtrant le trafic reseau entrant et sortant.
+firmware : Logiciel permanent integre dans le materiel informatique.
+fonction : Bloc de code effectuant une tache specifique reutilisable.
+formatage : Processus de preparation d'un support de stockage pour enregistrement.
+fournisseur de services : Organisation fournissant des services internet ou reseau.
+ftp : Protocole permettant le transfert de fichiers entre ordinateurs.
+gestion de l'identite : Systeme pour gerer l'authentification et l'autorisation des utilisateurs.
+gigaoctet : Un milliard d'octets, unite de mesure de stockage.
+gouvernance des donnees : Processus pour assurer la qualite et la securite des donnees.
+gpu : Processeur graphique specialise dans le traitement d'images.
+hash : Algorithme transformant des donnees en une chaine de caracteres unique.
+hexadecimal : Systeme de numerotation en base 16, chiffres 0-9 et lettres A-F.
+hot spare : Dispositif de secours preconfigure pour etre utilise en cas de defaillance.
+hote : Appareil ou systeme dans un reseau fournissant des ressources ou services.
+hotspot : Point d'acces reseau sans fil.
+html : Langage de balisage pour structurer des pages web.
+http : Protocole de communication pour acceder aux pages web.
+ia conversationnelle : Intelligence artificielle pour le dialogue avec des humains.
+ia forte : Intelligence artificielle qui tente de reproduire les capacites humaines.
+ia faible : Intelligence artificielle axe sur des taches specifiques.
+informatique en edge : Traitement des donnees au plus proche de l'utilisateur final.
+infra : Ensemble des equipements reseaux, serveurs, et installations techniques.
+interface utilisateur : Moyens par lesquels un utilisateur interagit avec un systeme.
+interface : Moyen de communication entre differents systemes ou logiciels.
+interoperabilite : Capacite de differentes systemes a fonctionner ensemble.
+intranet : Reseau interne restreint aux membres d'une organisation.
+ip statique : Adresse IP qui reste constante dans le temps.
+ip dynamique : Adresse IP qui change a chaque connexion au reseau.
+ipv4 : Protocole d'adressage des appareils dans les reseaux.
+ipv6 : Protocole d'adressage Internet permettant un nombre accru d'adresses.
+isolation de processus : Technique de separation des processus pour securite.
+iteration : Processus de repetition d'instructions dans un programme.
+jointure : Operation combinant des enregistrements de plusieurs tables en base de donnees.
+journalisation : Enregistrement des activites et des evenements dans un systeme.
+json : Format de donnees en texte simple utilise pour les API web.
+kernel panic : Erreur critique dans le noyau d'un systeme d'exploitation.
+kernel : Coeur d'un systeme d'exploitation gerant les ressources materielles.
+kit de developpement : Ensemble d'outils pour faciliter le developpement logiciel.
+kubernetes : Plateforme pour automatiser le deploiement d'applications conteneurisees.
+lan : Reseau local connectant des ordinateurs proches.
+librairie : Ensemble de fonctions et ressources pretes a l'emploi pour developpeurs.
+licences logicielles : Conditions legales d'utilisation et de redistribution d'un logiciel.
+livraison continue : Methode de deploiement frequent des mises a jour logicielles.
+logiciel malveillant : Programme concu pour nuire a un systeme informatique.
+logiciel : Ensemble d'instructions permettant a un ordinateur de realiser une tache.
+machine de production : Systeme en exploitation produisant des resultats pour les utilisateurs finaux.
+machine a etats : Modele mathematique pour simuler le comportement d'un systeme.
+machine learning : Branche de l'intelligence artificielle permettant aux systemes d'apprendre.
+machine virtuelle : Instance logicielle emulant un ordinateur physique.
+maliciel : Logiciel malveillant destine a endommager ou voler des donnees.
+mappage de port : Redirection du trafic reseau a un port specifique.
+memoire tampon : Zone de stockage temporaire pour gerer les flux de donnees.
+memoire : Composant stockant temporairement ou durablement les donnees.
+microcontroleur : Circuit integre executant un programme embarque dans un appareil.
+microservices : Architecture divisee en services independants pour chaque fonctionnalite.
+mise en cache : Stockage temporaire de donnees pour ameliorer la performance.
+mise a jour ota : Mise a jour d'un appareil sans fil via un reseau.
+modele client-serveur : Architecture reseau ou le client demande des services au serveur.
+modele de donnees : Structure qui organise les donnees pour une utilisation specifique.
+modem : Appareil convertissant des donnees numeriques en signaux analogiques.
+multiplexage : Technique permettant de transmettre plusieurs flux dans un meme canal.
+multithreading : Execution simultanee de plusieurs threads dans un programme.
+mutex : Objet de synchronisation pour gerer l'acces concurrent a une ressource.
+namespace : Espace de noms pour eviter les conflits de noms dans un programme.
+nanoseconde : Miliardieme de seconde, utilise pour mesurer de tres petites durees.
+nfc : Technologie de communication sans fil a courte distance.
+node : Point d'un reseau representant un appareil ou un ordinateur.
+noyau temps reel : Coeur du systeme d'exploitation avec des garanties de temps de reponse.
+numerique : Donnees representees sous forme de nombres.
+objet : Instance d'une classe, regroupant donnees et methodes en OOP.
+octet : Ensemble de 8 bits, unite de mesure pour les donnees.
+open api : Interface permettant aux developpeurs d'acceder aux services d'une application.
+open data : Donnees mises a disposition du public pour reutilisation.
+orchestrateur de conteneurs : Systeme pour gerer le deploiement et la coordination des conteneurs.
+paas : Platforme de services pour le developpement d'applications.
+pare-feu applicatif : Protection reseau au niveau des applications.
+pare-feu personnel : Pare-feu controle par un utilisateur pour proteger un seul appareil.
+pare-feu reseau : Outil protegeant un reseau en filtrant le trafic indesirable.
+partition dynamique : Ajustement automatique des partitions pour gerer les ressources.
+partition : Division logique d'un disque dur en sections independantes.
+partitionnement : Division d'un disque ou d'une base de donnees en plusieurs sections.
+passerelle reseau : Dispositif reliant deux reseaux differents.
+penetration test : Test visant a trouver des vulnerabilites dans un systeme.
+pile : Structure de donnees ou les elements sont traites en LIFO.
+ping : Commande verifiant la connectivite entre deux appareils reseau.
+pixel : Plus petite unite graphique affichee sur un ecran.
+plateforme en ligne : Infrastructure offrant divers services sur Internet.
+plugin : Extension qui ajoute des fonctionnalites a un logiciel.
+point d'acces : Appareil permettant de connecter des appareils a un reseau sans fil.
+processeur : Composant d'un ordinateur executant les instructions.
+programmation fonctionnelle : Style de programmation qui privilegie les fonctions pures.
+proprietes d'un objet : Attributs specifiques qui definissent un objet dans OOP.
+protection ddos : Systeme de securite contre les attaques de deni de service distribue.
+protocole : Ensemble de regles regissant les echanges de donnees dans un reseau.
+protocoles reseau : Ensemble de regles pour l'echange de donnees.
+proxy inverse : Serveur intermediaire pour gerer les requetes vers des serveurs internes.
+pseudocode : Ecriture simplifiee d'algorithmes en langage naturel.
+raid : Technologie de stockage combinant plusieurs disques pour redondance.
+ram : Memoire vive stockant temporairement les donnees en cours d'utilisation.
+reconnaissance de formes : Detection de patterns dans les donnees.
+redirection ip : Technique pour orienter le trafic vers une autre adresse IP.
+redirection d'url : Methode permettant de rediriger les visiteurs vers une autre adresse.
+redundancy : Mesures prises pour garantir la continuite de service.
+regles de firewall : Configuration des criteres de securite pour filtrer le trafic reseau.
+replicat : Copie de donnees pour la redondance et la securite.
+reseau maille : Systeme de communication connectant chaque appareil a plusieurs autres.
+reseau : Ensemble d'ordinateurs interconnectes pour echanger des donnees.
+resilience : Capacite d'un systeme a fonctionner malgre des defaillances.
+rom : Memoire morte stockant les instructions de maniere permanente.
+rootkit : Logiciel malveillant cachant les activites d'autres logiciels malveillants.
+routage : Processus de transfert de donnees dans un reseau.
+sauvegarde hors site : Backup des donnees dans un lieu different.
+sauvegarde complete : Copie de toutes les donnees sans exception.
+sauvegarde incrementielle : Copie des seules modifications depuis la derniere sauvegarde.
+scalabilite verticale : Capacite a ajouter des ressources a un seul serveur.
+scalabilite : Capacite d'un systeme a gerer une augmentation de charge.
+serveur d'authentification : Systemes verifies les identites des utilisateurs sur un reseau.
+serveur proxy : Serveur intermediaire pour filtrer les connexions et cacher l'adresse IP.
+serveur cache : Serveur stockant temporairement des copies de pages web frequemment demandees.
+serveur dns : Systeme traduisant des noms de domaine en adresses IP.
+serveur : Ordinateur fournissant des services a d'autres ordinateurs clients.
+sharding : Division horizontale d'une base de donnees pour distribuer la charge.
+socket : Interface de communication reseau entre deux machines.
+spam : Messages indesirables envoyes en masse.
+stockage a froid : Conservation des donnees dans des systemes hors ligne.
+suivi d'integrite : Surveillance des fichiers pour detecter des modifications non autorisees.
+switch reseau : Dispositif qui connecte plusieurs appareils dans un reseau local.
+switch manageable : Switch reseau que l'on peut configurer.
+switch : Dispositif reseau reliant plusieurs appareils dans un reseau local.
+synchronisation : Coordination de l'execution des taches entre plusieurs systemes.
+systeme de detection d'intrusion : Systeme pour identifier les tentatives d'infiltration.
+systeme : Ensemble logiciel gerant les ressources materielles d'un ordinateur.
+table de hachage : Structure de donnees rapide pour la recherche d'informations.
+table de translation : Liste qui transforme les adresses reseau pour le NAT.
+table de routage : Liste qui guide les paquets reseau vers leurs destinations.
+tableau : Structure de donnees qui stocke une collection d'elements dans des emplacements contigus.
+tampon circulaire : Structure de donnees utilisee pour stocker des elements de maniere circulaire.
+tampon : Memoire temporaire utilisee pour stocker des donnees pendant leur transfert.
+telechargement de pilote : Installation d'un logiciel permettant de gerer un composant materiel.
+temps reel : Execution immediate des taches a mesure que les donnees sont generees.
+temps de latence : Delai entre une demande et sa reponse.
+test de charge : Evaluation des performances d'un systeme sous forte demande.
+thread : Plus petite unite d'execution dans un processus.
+threat intelligence : Collecte et analyse des informations sur les menaces.
+tls : Protocoles cryptographiques pour la securite des communications.
+token d'acces : Element de securite pour verifier l'identite d'un utilisateur.
+token : Element unique de securite pour authentification et autorisation.
+tokenization : Remplacement de donnees sensibles par des valeurs non sensibles.
+trafic reseau : Volume de donnees circule entre les appareils connectes.
+traitement par lots : Execution d'une serie de programmes sans intervention utilisateur.
+transcodage : Conversion d'un format de fichier a un autre.
+transfer de fichiers securise : Methode pour envoyer des fichiers en toute securite.
+trojan : Logiciel malveillant se faisant passer pour un programme legitime.
+tunnel vpn : Connexion reseau chiffree et securisée.
+tuyau reseau : Connexion virtuelle pour transmettre des donnees entre deux points.
+unicode : Standard de codage pour representer des caracteres textuels.
+unified threat management : Systeme qui combine plusieurs fonctions de securite.
+usb : Interface standard pour connecter des peripheriques a un ordinateur.
+usurpation d'identite : Prendre l'identite d'un autre utilisateur pour frauder.
+validation des donnees : Verification de l'exactitude et de la validite des donnees.
+variable : Emplacement memoire stockant une valeur modifiable.
+vecteur d'attaque : Methode utilisee pour penetrer un systeme cible.
+vector : Structure de donnees dynamique contenant une serie d'elements.
+verificateur de protocole : Outil pour analyser le comportement d'un protocole reseau.
+virtualisation d'application : Technique pour isoler et executer des applications.
+virtualisation reseau : Creation de reseaux virtuels sur une infrastructure physique.
+virtualisation : Technique creant une version virtuelle d'un materiel ou systeme.
+voip : Protocole permettant les communications vocales sur Internet.
+vpn : Reseau prive virtuel pour une connexion securisee.
+web scraping : Extraction de donnees depuis des sites web.
+web : Systeme interconnecte d'informations accessible via Internet.
+websocket : Protocole pour des connexions bidirectionnelles en temps reel.
+wifi : Technologie sans fil pour connexion reseau.
+workflow : Serie d'etapes definissant un processus de travail.
+xml schema : Langage pour decrire la structure d'un document XML.
+xml : Langage de balisage pour le stockage structure de donnees.
+yottaoctet : Unite de mesure equivalente a un quadrillion d'octets.
+zero trust : Modele de securite qui ne fait confiance a aucun utilisateur ou appareil.
+zero-day exploit : Exploitation d'une vulnerabilite inconnue des developpeurs.

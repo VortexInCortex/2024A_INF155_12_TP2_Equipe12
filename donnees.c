@@ -11,6 +11,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MAX_CHAINE 512
+
 //  Definition du type des donnees
 struct s_donnees {
     t_entree **entrees;
@@ -96,9 +98,9 @@ void t_donnees_test() {
     assert(donnees->capacite == 4);
 
     char *reponses[][3] = {
-            {"abracadabra", "abracadabra",          "World!"},
-            {"hello",       "hello tout le monde!", "On dit bonjour."},
-            {"hi",          "hi",                   "World!"}
+        {"abracadabra", "abracadabra", "World!"},
+        {"hello", "hello tout le monde!", "On dit bonjour."},
+        {"hi", "hi", "World!"}
     };
     for (int i = 0; i < 3; i++) {
         assert(strcmp(t_entree_get_mot(donnees->entrees[i]), reponses[i][0]) == 0);
@@ -123,7 +125,7 @@ void t_donnees_test() {
     t_donnees_liberer(donnees);
 
     //  t_donnees_creer_fichier
-    donnees = t_donnees_lire_fichier("../dictionnaire (complet).txt");
+    donnees = t_donnees_lire_fichier("../bd_complete.txt");
     // t_donnees_afficher(tdp);
 
     char *question = "Qu'est-ce qu'une adresse MAC ?";
