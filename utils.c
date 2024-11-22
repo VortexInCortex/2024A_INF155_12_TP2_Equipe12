@@ -85,8 +85,10 @@ void utils_chaine_decouper(char *ligne, char *expression, char *definition, cons
                 // if ((strlen(expression) > longueur_expression) && (strlen(definition) > longueur_definition)) {
                 for (int i = 0; i < longueur_expression; i++)
                     expression[i] = ligne[i];
+                expression[longueur_expression] = 0; // Inserer le 0 apres le string
                 for (int i = 0; i < longueur_definition; i++)
-                    definition[i] = ligne[i + (longueur_definition)]; // La definition ce trouve a l'offset dans le tableau ligne
+                    definition[i] = ligne[i + (longueur_expression + 1)]; // l'expression en paranthese est l'offset
+                definition[longueur_definition] = 0; // Inserer le 0 apres le string
                 // } else
                 //     printf("ERROR: DEBUG: Trop peu d'espace dans le pointeur expression donnee a la fonction \"utils_chaine_decouper\"\n");
             }
@@ -106,6 +108,7 @@ void utils_chaine_premier_mot(const char *expression, char *mot) {
             // if (strlen(mot) > index)
             for (int i = 0; i < longueur_mot; i++)
                 mot[i] = expression[i];
+            mot[longueur_mot] = 0; // Inserer le 0 apres le string
             // else
             //     printf("ERROR: DEBUG: Trop peu d'espace dans le pointeur mot donnee a la fonction \"utils_chaine_premier_mot\"\n");
         }
