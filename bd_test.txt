@@ -1,0 +1,5 @@
+    test     : Ceci est un fichier de test
+
+chaine  de caracteres :        Une suite de caracteres terminee par le caractere '\0'.
+
+

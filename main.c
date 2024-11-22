@@ -1,5 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "utils.h"
 #include "paire.h"
@@ -9,7 +11,6 @@
 #include "chatBot.h"
 #include "mon_malloc.h"
 
-//#define TESTS true
 
 void tests() {
     utils_test(); //  0 mallocs
@@ -25,14 +26,21 @@ void tests() {
     printf("Il devrait y avoir 1706 allocations/desallocations...\n");
 }
 
-int main(void) {
-#if TESTS
-    tests();
-#else
-    // decommenter l'une des 3 lignes suivantes selon la base de donnees que vous desirez
-    // chatBot(NULL);   //  aucune base de connaissances
-    // chatBot("../dictionnaire (test).txt");  //  base de connaissances minimale
-    chatBot("../dictionnaire (complet).txt"); //  base de connaissances plus evoluee
-#endif
+int main(int argc, char **argv) {
+    // if (argc != 2) {
+    //     fprintf(stderr, "Usage : ./ChatBotV2 <nom fichier donnees>\n");
+    //     fprintf(stderr, "        ./ChatBotV2 -debug\n");
+    //     fprintf(
+    //         stderr,
+    //         "NOTE: Le fichier de donnees doit se trouver dans le repertoire parent du repertoire ou se trouve l'executable.");
+    //     exit(-1);
+    // }
+    //
+    // if (!strcmp(argv[1], "-debug")) {
+    //     tests();
+    // } else {
+    //     chatBot(argv[1]);
+    // }
+
     return 0;
 }

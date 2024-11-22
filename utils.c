@@ -6,6 +6,7 @@
 
 #include <assert.h>
 #include <ctype.h>
+#include <math.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -24,6 +25,22 @@ char *utils_chaine_minuscules(char *chaine) {
 }
 
 char *utils_chaine_tailler(char *chaine) {
+    const int length = (int) strlen(chaine);
+
+    if (length == 0) {
+        printf("ERROR: DEBUG: La chaine passe a utils_chaine_tailler etait de taille nulle!");
+    } else {
+        int start_index = -1;
+        while (isspace(chaine[0])) {
+            start_index++;
+            if (!isspace(chaine[start_index]))
+                chaine = chaine + start_index;
+        }
+        for (int end_index = length - start_index - 1; isspace(chaine[end_index]) && end_index >= 0; end_index--) {
+            chaine[end_index] = 0;
+        }
+    }
+
     return chaine;
 }
 
@@ -54,15 +71,50 @@ char *utils_fichier_ligne_suivante(const char *nom_fichier) {
 }
 
 void utils_chaine_decouper(char *ligne, char *expression, char *definition, const char *delimiteurs) {
-    // A completer
+    int nb_delims = (int) strlen(delimiteurs);
+    int length = (int) strlen(ligne);
+    for (int index_delims = 0; index_delims < nb_delims; index_delims++) {
+        for (int index = 1; index < length; index++) {
+            if (ligne[index + 1] == delimiteurs[index_delims]) {
+                // Taille de tableau que l'on veut allouer
+                const int longueur_expression = index + 1;
+                const int longueur_definition = (length - (index + 2)) + 1;
+
+                // // Si l'espace de stockage dans expression ou definition est trop petit, annuler le stockage pour eviter
+                // // de corrompre d'autres donnees(0xC000000005) | On utilise strictement plus grand pour pouvoir stocker le \0 a la fin
+                // if ((strlen(expression) > longueur_expression) && (strlen(definition) > longueur_definition)) {
+                for (int i = 0; i < longueur_expression; i++)
+                    expression[i] = ligne[i];
+                for (int i = 0; i < longueur_definition; i++)
+                    definition[i] = ligne[i + (longueur_definition)]; // La definition ce trouve a l'offset dans le tableau ligne
+                // } else
+                //     printf("ERROR: DEBUG: Trop peu d'espace dans le pointeur expression donnee a la fonction \"utils_chaine_decouper\"\n");
+            }
+        }
+    }
 }
 
 void utils_chaine_premier_mot(const char *expression, char *mot) {
-    // A completer
+    for (int index = 0; !isspace(expression[index]); index++) {
+        // **S'assurer que l'expression a ete taille avant d'appeler premier mot.**
+        if (!isspace(expression[index]) && isspace(expression[index + 1])) {
+            // Taille de tableau que l'on veut allouer
+            const int longueur_mot = index + 1;
+
+            // // Si l'espace de stockage dans mot est trop petit, annuler le stockage pour eviter
+            // // de corrompre d'autres donnees(0xC000000005) | On utilise strictement plus grand pour pouvoir stocker le \0 a la fin
+            // if (strlen(mot) > index)
+            for (int i = 0; i < longueur_mot; i++)
+                mot[i] = expression[i];
+            // else
+            //     printf("ERROR: DEBUG: Trop peu d'espace dans le pointeur mot donnee a la fonction \"utils_chaine_premier_mot\"\n");
+        }
+    }
 }
 
 bool utils_saisir_oui_non() {
-    // A completer
+    bool choix = false;
+    return choix;
 }
 
 void utils_test() {
@@ -85,7 +137,7 @@ void utils_test() {
     strcpy(lignes[1], "chaine  de caracteres:Une suite de caracteres terminee par le caractere '\\0'.");
     int nb = 0;
     char *ligne;
-    while (ligne = utils_fichier_ligne_suivante("../test_utils.txt")) {
+    while ((ligne = utils_fichier_ligne_suivante("../test_utils.txt"))) {
         assert(strcmp(ligne, lignes[nb]));
         nb++;
     }
@@ -95,7 +147,9 @@ void utils_test() {
         {"test", "Ceci est un fichier de test."},
         {"chaine  de caracteres", "Une suite de caracteres terminee par le caractere '\\0'."}
     };
+    // ReSharper disable once CppTooWideScope
     char mot_clef[MAX_CHAINE];
+    // ReSharper disable once CppTooWideScope
     char definition[MAX_CHAINE];
     for (int i = 0; i < sizeof(lignes) / sizeof(lignes[0]); i++) {
         utils_chaine_decouper(lignes[i], mot_clef, definition, ":");

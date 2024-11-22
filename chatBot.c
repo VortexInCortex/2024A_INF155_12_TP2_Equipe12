@@ -43,7 +43,7 @@ void chatBot(const char *nom_fichier_donnees) {
 void chatBot_test() {
     printf("------------------------ TEST CHATBOT ------------------------\n");
 
-    t_donnees *donnees = t_donnees_lire_fichier("../dictionnaire (test).txt");
+    t_donnees *donnees = t_donnees_lire_fichier("../bd_simple.txt");
     t_donnees_afficher(donnees);
 
     //  chatBot_repondre_question
