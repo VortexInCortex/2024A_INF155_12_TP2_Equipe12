@@ -26,7 +26,15 @@ struct s_paire {
 //  Definition des fonctions publiques
 //  ----------------------------------
 t_paire *t_paire_creer(const char *expression, const char *definition) {
-	// A completer
+	t_paire *paire = malloc(sizeof(t_paire));
+	paire->expression = (char *) malloc(strlen(expression) + 1);
+	strcpy(paire->expression, expression);
+	utils_chaine_minuscules(paire->expression);
+	paire->longueur = strlen(expression);
+	paire->definition = (char *) malloc(strlen(definition) + 1);
+	strcpy(paire->definition, definition);
+
+	return paire;
 }
 
 void t_paire_liberer(t_paire *paire) {
