@@ -118,13 +118,14 @@ void utils_chaine_premier_mot(const char *expression, char *mot) {
 bool utils_saisir_oui_non() {
     bool choix = false;
     char reponse[4] = {0};
-    char oui[4] = "oui\0";
-    char non[4] = "non\0";
+    const char oui[4] = "oui\0";
+    const char non[4] = "non\0";
 
     printf("Oui ou non? : ");
     fflush(stdin);
-    scanf("%4[A-Za-z]s", reponse);
+    scanf("%4[A-Za-z]s", &reponse);
     utils_chaine_minuscules(reponse);
+
     if (strcmp(reponse, oui) == 0)
         choix = true;
     else if (strcmp(reponse, non) == 0)
@@ -133,7 +134,7 @@ bool utils_saisir_oui_non() {
         do {
             printf("\nSaisissez oui ou non : ");
             fflush(stdin);
-            scanf("%4[A-Za-z]s", reponse);
+            scanf("%4[A-Za-z]s", &reponse);
             utils_chaine_minuscules(reponse);
             if (strcmp(reponse, oui) == 0)
                 choix = true;
