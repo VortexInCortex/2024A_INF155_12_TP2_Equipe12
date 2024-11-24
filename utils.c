@@ -6,6 +6,7 @@
 
 #include <assert.h>
 #include <ctype.h>
+#include <errno.h>
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
@@ -16,9 +17,9 @@
 //  Definition des fonctions publiques
 //  ----------------------------------
 char *utils_chaine_minuscules(char *chaine) {
-    const int longeur_chaine = (int) strlen(chaine);
+    const int longueur_chaine = (int) strlen(chaine);
 
-    for (int indice = 0; indice < longeur_chaine; indice++)
+    for (int indice = 0; indice < longueur_chaine; indice++)
         chaine[indice] = (char) tolower(chaine[indice]);
 
     return chaine;
@@ -26,8 +27,25 @@ char *utils_chaine_minuscules(char *chaine) {
 
 char *utils_chaine_tailler(char *chaine) {
     const int length = (int) strlen(chaine);
+    int temp = (int)NULL;
 
-    if (length == 0) {
+    if (length == (int)NULL) {
+        _strerror("ERREUR : Chaine de caractere \"chaine\" vide");
+    }
+    else {
+        for (int i = (int)NULL; i < length; i++) {
+            if (isspace(chaine[i]))
+                chaine[i] = (char)NULL;
+            else {
+                for (int j = length - i - 1;isspace(chaine[j]) && j >= (int)NULL; j--) {
+                    chaine[j] = (char)NULL;
+                }
+            }
+        }
+    }
+
+
+    /*if (length == 0) {
         printf("ERROR: DEBUG: La chaine passe a utils_chaine_tailler etait de taille nulle!");
     } else {
         int start_index = -1;
@@ -39,7 +57,7 @@ char *utils_chaine_tailler(char *chaine) {
         for (int end_index = length - start_index - 1; isspace(chaine[end_index]) && end_index >= 0; end_index--) {
             chaine[end_index] = 0;
         }
-    }
+    }*/
 
     return chaine;
 }
