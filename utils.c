@@ -89,9 +89,16 @@ char *utils_fichier_ligne_suivante(const char *nom_fichier) {
 }
 
 void utils_chaine_decouper(char *ligne, char *expression, char *definition, const char *delimiteurs) {
+    // Sachant que le mot-clef (expression) est séparé de la définition par ":" (en appelant utils_chaine_minuscules())
+    // EX.: ascii : Code standard de representation des caracteres en informatique.
+
+    // nombre de caractère qui délimite l'expression de la définition
     int nb_delims = (int) strlen(delimiteurs);
+    // nombre de caractère sur une ligne expression/définition
     int length = (int) strlen(ligne);
-    for (int index_delims = 0; index_delims < nb_delims; index_delims++) {
+
+    for ()
+    /*for (int index_delims = 0; index_delims < nb_delims; index_delims++) {
         for (int index = 1; index < length; index++) {
             if (ligne[index + 1] == delimiteurs[index_delims]) {
                 // Taille de tableau que l'on veut allouer
@@ -111,7 +118,7 @@ void utils_chaine_decouper(char *ligne, char *expression, char *definition, cons
                 //     printf("ERROR: DEBUG: Trop peu d'espace dans le pointeur expression donnee a la fonction \"utils_chaine_decouper\"\n");
             }
         }
-    }
+    }*/
 }
 
 void utils_chaine_premier_mot(const char *expression, char *mot) {
