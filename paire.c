@@ -38,31 +38,48 @@ t_paire *t_paire_creer(const char *expression, const char *definition) {
 }
 
 void t_paire_liberer(t_paire *paire) {
-	// A completer
+	free(paire);
+	free(paire -> expression);
+	free(paire -> definition);
+
 }
 
 void t_paire_afficher(const t_paire *paire) {
-	// A completer
+
+	printf("Expresseion : %s \n",paire -> expression);
+	printf("%s \n",paire -> definition);
 }
 
 const char *t_paire_get_expression(const t_paire *paire) {
-	// A completer
+	return paire -> expression;
 }
 
 size_t t_paire_get_longueur(const t_paire *paire) {
-	// A completer
+	return paire -> longueur;
 }
 
 const char *t_paire_get_definition(const t_paire *paire) {
-	// A completer
+	return paire -> definition;
 }
 
 bool t_paire_contient(const t_paire *paire, const char *question) {
-	// A completer
+	bool trouve = true;
+
+	//size_t longueur_question = paire -> longueur;
+
+	char *expression_trouve = strstr(question , paire -> expression);
+
+	if( expression_trouve == NULL) //La fonction strstr retourne NULL si l'expression n'est pas trouver dans la question
+	{
+		trouve = false;
+	}
+
+	return trouve;
 }
 
 void t_paire_ecrire_fichier(FILE *fichier, t_paire *paire) {
-	// A completer
+
+	fprintf(fichier,"%s : %s", t_paire_get_expression(paire),t_paire_get_definition(paire));
 }
 
 void t_paire_test() {
