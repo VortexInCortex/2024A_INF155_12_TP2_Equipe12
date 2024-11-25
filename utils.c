@@ -144,6 +144,15 @@ void utils_chaine_premier_mot(const char *expression, char *mot) {
 
 bool utils_saisir_oui_non() {
     bool choix = false;
+    char* reponse = 0;
+    printf("OUI ou NON ? ");
+    scanf("%3s", reponse);
+
+    if (reponse == "OUI")
+        choix = true;
+    if (reponse == "NON")
+        choix = false;
+
     return choix;
 }
 
