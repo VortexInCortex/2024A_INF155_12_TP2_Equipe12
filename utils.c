@@ -97,8 +97,7 @@ void utils_chaine_decouper(char *ligne, char *expression, char *definition, cons
     // nombre de caractère sur une ligne expression/définition
     int length = (int) strlen(ligne);
 
-    for ()
-    /*for (int index_delims = 0; index_delims < nb_delims; index_delims++) {
+    for (int index_delims = 0; index_delims < nb_delims; index_delims++) {
         for (int index = 1; index < length; index++) {
             if (ligne[index + 1] == delimiteurs[index_delims]) {
                 // Taille de tableau que l'on veut allouer
@@ -108,9 +107,12 @@ void utils_chaine_decouper(char *ligne, char *expression, char *definition, cons
                 // // Si l'espace de stockage dans expression ou definition est trop petit, annuler le stockage pour eviter
                 // // de corrompre d'autres donnees(0xC000000005) | On utilise strictement plus grand pour pouvoir stocker le \0 a la fin
                 // if ((strlen(expression) > longueur_expression) && (strlen(definition) > longueur_definition)) {
+
+                // Définition de l'expression dans la ligne
                 for (int i = 0; i < longueur_expression; i++)
                     expression[i] = ligne[i];
                 expression[longueur_expression] = 0; // Inserer le 0 apres le string
+                // Définition de la définition dans la ligne
                 for (int i = 0; i < longueur_definition; i++)
                     definition[i] = ligne[i + (longueur_expression + 1)]; // l'expression en paranthese est l'offset
                 definition[longueur_definition] = 0; // Inserer le 0 apres le string
@@ -118,7 +120,7 @@ void utils_chaine_decouper(char *ligne, char *expression, char *definition, cons
                 //     printf("ERROR: DEBUG: Trop peu d'espace dans le pointeur expression donnee a la fonction \"utils_chaine_decouper\"\n");
             }
         }
-    }*/
+    }
 }
 
 void utils_chaine_premier_mot(const char *expression, char *mot) {
