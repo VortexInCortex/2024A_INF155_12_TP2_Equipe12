@@ -46,7 +46,7 @@ void t_paire_liberer(t_paire *paire) {
 
 void t_paire_afficher(const t_paire *paire) {
 
-	printf("Expresseion : %s \n",paire -> expression);
+	printf("%s :",paire -> expression);
 	printf("%s \n",paire -> definition);
 }
 
