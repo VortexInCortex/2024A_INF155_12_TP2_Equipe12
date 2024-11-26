@@ -38,7 +38,9 @@ t_paire *t_paire_creer(const char *expression, const char *definition) {
 }
 
 void t_paire_liberer(t_paire *paire) {
-	// A completer
+	free(paire->expression);
+	free(paire->definition);
+	free(paire);
 }
 
 void t_paire_afficher(const t_paire *paire) {
