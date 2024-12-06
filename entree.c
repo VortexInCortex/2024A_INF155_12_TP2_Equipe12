@@ -25,22 +25,20 @@ struct s_entree {
 //  Definition des fonctions publiques
 //  ----------------------------------
 t_entree *t_entree_creer(const char *mot) {
-	// Allocation dynamique de mémoire pour toutes les variables inclue dans t_entree
-	/* Aucun besoin de faire calloc() si on peut juste écraser les données précédentes à une
-	 * adresse dans le stack (dans le cas où une valeur serai présente avant d'allouer un
-	 * espace dans la mémoire)																*/
+	// S'il n'y a pas de mot à associer avec la nouvelle entree
+	if (!mot)
+		return NULL;
 
-	/*t_entree *entree = (t_entree*)malloc(sizeof(t_entree*));
+	// Allocation dynamique de mémoire pour toutes les variables inclue dans t_entree
+	t_entree *entree = (t_entree*)malloc(sizeof(t_entree*));
 	entree->mot = (char*)malloc(sizeof(mot));
 	entree->liste = (t_liste*)malloc(sizeof(t_liste*));
 
-	// Initialisation d'un mot de l'entree?
+	// Initialisation d'un mot de l'entree
 	entree->mot = 0;
 	entree->liste = 0;
 
-	return entree;*/
-
-	return NULL;
+	return entree;
 }
 
 void t_entree_liberer(t_entree *entree) {
@@ -60,60 +58,50 @@ void t_entree_liberer(t_entree *entree) {
 // comment je doit utiliser la variable "mot"
 /***********************************************/
 void t_entree_afficher(const t_entree *entree) {
-	while (entree != NULL) {
-		printf("%s", entree->mot);
-		t_liste_afficher(entree->liste);
-	}
-
-	//printf("%s", entree->mot);
-	//printf("%p", entree->liste); // ??? //
+	assert(entree != NULL);
+	printf("Mot : %s", entree->mot);
 }
 
 char *t_entree_get_mot(const t_entree *entree) {
-	assert(entree != NULL);
-	return entree->mot;
+	// Si entree n'est pas nulle, alors retourne le mot associé à entree
+	return entree != NULL ? entree->mot : NULL;
 }
 
 void t_entree_chercher(t_entree *entree, const char *question, const char **expression, const char **definition) {
-	/*const int size_question = (int) strlen(question);
-	const int size_expression = (int) strlen(&&expression);
+	// Vérifier si les variables en param sont vides
+	assert(entree != NULL);
+	assert(question != NULL);
+	assert(expression != NULL);
+	assert(definition != NULL);
 
-	for (int index_question = 0; index_question < size_question; index_question++) {
-		for (int index_expr = 0; index_expr < )
-	}*/
+	// Placer l'adresse de l'expression de la paire dans expression (Idem pour definition)
+	t_liste_get_infos(entree->liste, expression, definition);
 
-	t_entree *plus_longue_expr = (t_entree*)malloc(sizeof(t_entree));
-
-	while (entree != NULL) {
-		for (int index_question = 0; index_question < strlen(question); index_question++) {
-			/*********************************/
-			if (strcmp(t_entree_get_mot(entree), question)) {
-				// ????
-			}
-			/*********************************/
-			if (strcmp(&&expression, question)) {
-				t_liste_chercher(entree->liste, question, expression, definition);
-			}
-			/*********************************/
+	for (int i = 0; i < sizeof(entree->liste.paire); i++) {
+		// Si l'expression est dans la question
+		if (strstr(question, *expression)) {
+			//*expression = ;
+			//*definition = ;
 		}
 	}
 }
 
 void t_entree_ajouter(t_entree *entree, const char *expression, const char *definition) {
-	/*t_entree *res = malloc(sizeof(t_entree));
-	assert(res != NULL);
+	assert(entree != NULL);
+	assert(expression != NULL);
+	assert(definition != NULL);
 
-	res->mot = t_entree_get_mot(entree); // IDK
-	res->liste = t_liste_ajouter(entree->liste, expression, definition);
-
-	mon_free(res);*/
-
-	t_liste_ajouter(entree->liste, expression, definition);
+	//entree->liste->paire = realloc(entree->liste.paire, sizeof(entree->liste.paire) * sizeof(t_paire));
 }
 
 void t_entree_ecrire_fichier(FILE *fichier, const t_entree *entree) {
 	assert(entree != NULL);
-	t_liste_ecrire_fichier(fichier, entree->liste);
+	assert(fichier != NULL);
+
+	fprintf(fichier, "Mot : %s", entree->mot);
+	for (int i = 0; i < sizeof(entree->liste); i++) {
+		//fprintf(fichier, "\nExpression : %s Definition : %s", )
+	}
 }
 
 void t_entree_test() {
