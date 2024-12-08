@@ -27,12 +27,24 @@ struct s_paire {
 //  ----------------------------------
 t_paire *t_paire_creer(const char *expression, const char *definition) {
 	t_paire *paire = malloc(sizeof(t_paire));
-	paire->expression = (char *) malloc(strlen(expression) + 1);
-	strcpy(paire->expression, expression);
-	utils_chaine_minuscules(paire->expression);
-	paire->longueur = strlen(expression);
-	paire->definition = (char *) malloc(strlen(definition) + 1);
-	strcpy(paire->definition, definition);
+	if (!paire) {
+		fprintf(stderr, "ERROR: DEBUG: Couldn't allocate paire\n");
+		// ReSharper disable once CppDeclarationHidesLocal
+		t_paire *paire = NULL;
+	}
+	else {
+		size_t exp_len = strlen(expression);
+		size_t exp_def = strlen(definition);
+
+		paire->expression = (char *) malloc(exp_len + 1);
+		strcpy(paire->expression, expression);
+		utils_chaine_minuscules(paire->expression);
+
+		paire->longueur = exp_len;
+
+		paire->definition = (char *) malloc(exp_def + 1);
+		strcpy(paire->definition, definition);
+	}
 
 	return paire;
 }
@@ -73,7 +85,7 @@ bool t_paire_contient(const t_paire *paire, const char *question) {
 }
 
 void t_paire_ecrire_fichier(FILE *fichier, t_paire *paire) {
-	fprintf(fichier, "%s : %s", t_paire_get_expression(paire), t_paire_get_definition(paire));
+	fprintf(fichier, "%s : %s\n", t_paire_get_expression(paire), t_paire_get_definition(paire));
 }
 
 void t_paire_test() {
