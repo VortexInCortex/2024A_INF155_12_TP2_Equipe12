@@ -29,6 +29,15 @@ char *utils_chaine_minuscules(char *chaine);
 char *utils_chaine_tailler(char *chaine);
 
 /**
+ * @name utils_fichier_ligne_suivante
+ * @short lit la prochaine ligne dans le fichier specifie.
+ * @param nom_fichier le nom du fichier dans lequel lire la prochaine ligne.
+ * @return pointeur sur le debut de la prochaine ligne.
+ * @remark cette fonction vous est fournie.
+ */
+char *utils_fichier_ligne_suivante(const char *nom_fichier);
+
+/**
  * @name utils_ligne_decouper
  * @short separe le mot-clef de sa definition.
  * @param ligne pointeur sur la ligne a decouper.
@@ -56,14 +65,9 @@ void utils_chaine_premier_mot(const char *expression, char *mot);
  */
 bool utils_saisir_oui_non();
 
-/**
- * @name utils_fichier_ligne_suivante
- * @short lit la prochaine ligne dans le fichier specifie.
- * @param nom_fichier le nom du fichier dans lequel lire la prochaine ligne.
- * @return pointeur sur le debut de la prochaine ligne.
- * @remark cette fonction vous est fournie.
- */
-char *utils_fichier_ligne_suivante(const char *nom_fichier);
+void utils_stdout_vers_fichier(const char *nom_fichier);
+
+void utils_verifier_fichier(const char *nom_fichier, char *lignes[], int nb_lignes);
 
 /**
  * @name utils_test

@@ -61,8 +61,8 @@ void t_donnees_inserer(t_donnees *donnees, const char *expression, const char *d
 * @param donnees le tableau de donnees.
 * @param question la question dans laquelle chercher le mot.
 * @param mot le mot qui commence l'expression cherchee.
-* @param expression pointeur ou placer l'expression trouvee.
-* @param definition pointeur ou placer la definition trouvee.
+* @param expression pointeur ou placer l'adresse de l'expression trouvee.
+* @param definition pointeur ou placer l'adresse de la definition trouvee.
 * @return rien.
 * @attention la question doit etre en lettres minuscules.
 */

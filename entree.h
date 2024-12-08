@@ -56,6 +56,8 @@ char *t_entree_get_mot(const t_entree *entree);
  * @short cherche une paire de la liste dont l'expression se trouve dans la question.
  * @param entree un pointeur sur l'entree.
  * @param question un pointeur sur la question dans laquelle chercher l'expression.
+ * @param expression un pointeur sur un pointeur dans lequel placer l'adresse de l'expression trouvee.
+ * @param definition un pointeur sur un pointeur dans lequel placer l'adresse de la definition trouvee.
  * @return la paire dont l'expression se trouve dans la question et pour laquelle l'expression est de taille maximale.
  */
 void t_entree_chercher(t_entree *entree, const char *question, const char **expression, const char **definition);

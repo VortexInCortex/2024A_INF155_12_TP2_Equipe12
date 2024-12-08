@@ -9,6 +9,8 @@ mon_rapport
 
 // module utils (2/7)
 utils_fichier_ligne_suivante
+utils_stdout_vers_fichier
+utils_verifier_fichier
 utils_test
 
 // module paire (1/9)

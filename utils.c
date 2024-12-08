@@ -6,9 +6,18 @@
 
 #include <assert.h>
 #include <ctype.h>
-#include <math.h>
 #include <stdio.h>
 #include <string.h>
+
+#ifdef _WIN32
+#include <io.h>  // pour _dup et _dup2
+#define dup _dup
+#define dup2 _dup2
+#else
+
+#include <unistd.h>  // pour dup et dup2
+
+#endif
 
 #define MAX_CHAINE 512
 
@@ -142,6 +151,35 @@ bool utils_saisir_oui_non() {
     return choix;
 }
 
+void utils_stdout_vers_fichier(const char *nom_fichier) {
+    static int stdout_fd = -1;
+
+    if (nom_fichier != NULL) {
+        stdout_fd = dup(fileno(stdout));
+        assert(stdout_fd != -1);
+        FILE *fichier = freopen(nom_fichier, "w", stdout);
+        assert(fichier != NULL);
+    } else {
+        fflush(stdout);
+        assert(dup2(stdout_fd, fileno(stdout)) != -1);
+        close(stdout_fd);
+    }
+}
+
+void utils_verifier_fichier(const char *nom_fichier, char *lignes[], int nb_lignes) {
+    //  - test du fichier
+    char ligne[512];
+    FILE *fichier = fopen(nom_fichier, "r");
+    for (int i = 0; i < nb_lignes; i++) {
+        fgets(ligne, 512, fichier);
+        assert(strcmp(ligne, lignes[i]) == 0);
+    }
+    fclose(fichier);
+
+    //  - suppression du fichier
+    remove(nom_fichier);
+}
+
 void utils_test() {
     printf("------------------------ TEST UTILS ------------------------\n");
     char buffer[MAX_CHAINE];
@@ -162,19 +200,17 @@ void utils_test() {
     strcpy(lignes[1], "chaine  de caracteres:Une suite de caracteres terminee par le caractere '\\0'.");
     int nb = 0;
     char *ligne;
-    while ((ligne = utils_fichier_ligne_suivante("../test_utils.txt"))) {
+    while (ligne = utils_fichier_ligne_suivante("../bd_test.txt")) {
         assert(strcmp(ligne, lignes[nb]));
         nb++;
     }
 
-    //  utils_ligne_decouper
+    //  utils_chaine_decouper
     char *decoupes[][2] = {
-        {"test", "Ceci est un fichier de test."},
-        {"chaine  de caracteres", "Une suite de caracteres terminee par le caractere '\\0'."}
+            {"test",                  "Ceci est un fichier de test."},
+            {"chaine  de caracteres", "Une suite de caracteres terminee par le caractere '\\0'."}
     };
-    // ReSharper disable once CppTooWideScope
     char mot_clef[MAX_CHAINE];
-    // ReSharper disable once CppTooWideScope
     char definition[MAX_CHAINE];
     for (int i = 0; i < sizeof(lignes) / sizeof(lignes[0]); i++) {
         utils_chaine_decouper(lignes[i], mot_clef, definition, ":");
@@ -182,19 +218,19 @@ void utils_test() {
         assert(strcmp(definition, decoupes[i][1]) == 0);
     }
 
-    //  test utils_premier_mot
+    //  test utils_chaine_premier_mot
     char *expressions[][2] = {
-        {"langage", "langage"},
-        {"", ""},
-        {"bit de parie", "bit"},
-        {"serveur DNS", "serveur"}
+            {"langage",       "langage"},
+            {"",              ""},
+            {"bit de parite", "bit"},
+            {"serveur DNS",   "serveur"}
     };
     for (int i = 0; i < sizeof(expressions) / sizeof(expressions[0]); i++) {
         utils_chaine_premier_mot(expressions[i][0], buffer);
         assert(strcmp(buffer, expressions[i][1]) == 0);
     }
 
-    mon_rapport(false);
+    assert(mon_rapport(false) == 0);
 
     printf("TEST utils : OK\n");
 }

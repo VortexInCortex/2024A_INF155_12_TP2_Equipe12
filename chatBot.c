@@ -44,11 +44,21 @@ void chatBot_test() {
     printf("------------------------ TEST CHATBOT ------------------------\n");
 
     t_donnees *donnees = t_donnees_lire_fichier("../bd_simple.txt");
-    t_donnees_afficher(donnees);
 
     //  chatBot_repondre_question
     char question[] = "Pourquoi avoir plus de RAM dans un ordinateur!?";
+    const char *nom_fichier = "../_chatBot_test.txt";
+    utils_stdout_vers_fichier(nom_fichier);
     chatBot_repondre_question(donnees, question);
+    utils_stdout_vers_fichier(NULL);
+
+    char *lignes[] = {"ram : memoire vive a acces aleatoire.\n"};
+    utils_verifier_fichier(nom_fichier, lignes, 1);
+
+    //  sans redirection
+//    printf("Obtenu  : ");
+//    chatBot_repondre_question(donnees, question);
+//    printf("Attendu : ram : memoire vive a acces aleatoire.\n");
 
     t_donnees_liberer(donnees);
 

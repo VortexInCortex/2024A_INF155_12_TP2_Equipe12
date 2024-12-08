@@ -48,15 +48,11 @@ t_donnees *t_donnees_creer(size_t capacite) {
 	// A completer
 }
 
-void t_donnees_liberer(t_donnees *donnees) {
+void t_donnees_inserer(t_donnees *donnees, const char *expression, const char *definition) {
 	// A completer
 }
 
 void t_donnees_afficher(const t_donnees *donnees) {
-	// A completer
-}
-
-void t_donnees_inserer(t_donnees *donnees, const char *expression, const char *definition) {
 	// A completer
 }
 
@@ -70,6 +66,10 @@ t_donnees *t_donnees_lire_fichier(const char *nom_fichier) {
 }
 
 bool t_donnees_ecrire_fichier(t_donnees *donnees, const char *nom_fichier) {
+	// A completer
+}
+
+void t_donnees_liberer(t_donnees *donnees) {
 	// A completer
 }
 
@@ -98,13 +98,32 @@ void t_donnees_test() {
     assert(donnees->capacite == 4);
 
     char *reponses[][3] = {
-        {"abracadabra", "abracadabra", "World!"},
-        {"hello", "hello tout le monde!", "On dit bonjour."},
-        {"hi", "hi", "World!"}
+            {"abracadabra", "abracadabra",          "World!"},
+            {"hello",       "hello tout le monde!", "On dit bonjour."},
+            {"hi",          "hi",                   "World!"}
     };
     for (int i = 0; i < 3; i++) {
         assert(strcmp(t_entree_get_mot(donnees->entrees[i]), reponses[i][0]) == 0);
     }
+
+    // t_donnees_afficher
+    char *nom_fichier = "../_t_donnees_test.txt";
+    utils_stdout_vers_fichier(nom_fichier);
+    t_donnees_afficher(donnees);
+    utils_stdout_vers_fichier(NULL);
+    char *lignes1[] = {"Tableau dynamique de entrees (3/4) :\n",
+                       "  [abracadabra] : abracadabra : World!\n",
+                       "  [hello] : hello tout le monde! : On dit bonjour. - hello : World!\n",
+                       "  [hi] : hi : World!\n"};
+    utils_verifier_fichier(nom_fichier, lignes1, 4);
+
+    //  sans redirection
+//    printf("Obtenu  : ");
+//    t_donnees_afficher(donnees);
+//    printf("Attendu : Tableau dynamique de entrees (3/4) :\n"
+//           "  [abracadabra] : abracadabra : World!\n"
+//           "  [hello] : hello tout le monde! : On dit bonjour. - hello : World!\n"
+//           "  [hi] : hi : World!");
 
     //  t_donnees_chercher_entree
     t_entree *entree = t_donnees_chercher_entree(donnees, "hi");
@@ -121,15 +140,41 @@ void t_donnees_test() {
                                   &definition);
     assert(expression != NULL);
 
-    //  t_donnees_liberer
+    //  t_donnees_lire_fichier
     t_donnees_liberer(donnees);
+    //  - creation d'un fichier temporaire pour le test
+    FILE *fichier = fopen(nom_fichier, "w");
+    fprintf(fichier, "    \n");
+    fprintf(fichier, "    test     : Ceci est un fichier de test\n");
+    fprintf(fichier, "               \n");
+    fprintf(fichier, "chaine  de caracteres :        Une suite de caracteres terminee par le caractere '\\0'.\n");
+    fprintf(fichier, "    \n");
+    fprintf(fichier, "\n");
+    fclose(fichier);
 
-    //  t_donnees_creer_fichier
-    donnees = t_donnees_lire_fichier("../bd_complete.txt");
-    // t_donnees_afficher(tdp);
+    //  - lecture du fichier de donnees
+    donnees = t_donnees_lire_fichier(nom_fichier);
 
-    char *question = "Qu'est-ce qu'une adresse MAC ?";
+    //  - test sur le fichier
+    assert(donnees->taille == 2);
+    assert(donnees->capacite == 2);
+    assert(strcmp(t_entree_get_mot(donnees->entrees[0]), "chaine") == 0);
+    assert(strcmp(t_entree_get_mot(donnees->entrees[1]), "test") == 0);
 
+    //  t_donnees_ecrire_fichier
+    //  - ecriture du fichier de test
+    t_donnees_ecrire_fichier(donnees, nom_fichier + 3); //  sauter "../"
+
+    //  - tests sur le fichier
+    char *lignes2[] = {"chaine  de caracteres : Une suite de caracteres terminee par le caractere '\\0'.\n",
+                       "test : Ceci est un fichier de test\n"};
+    utils_verifier_fichier(nom_fichier, lignes2, 2);
+
+    //  t_donnees_redim
+    t_donnees_redim(donnees, 321);
+    assert(donnees->capacite == 321);
+
+    //  t_donnees_liberer
     t_donnees_liberer(donnees);
 
     assert(mon_rapport(false) == 0);

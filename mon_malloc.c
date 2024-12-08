@@ -32,13 +32,14 @@ long long mon_rapport(bool affiche) {
         printf("mon_rapport :\n");
         couleurs_reset();
         couleurs_set(STYLE_BOLD, FG_BRIGHT_GREEN, BG_BRIGHT_WHITE);
-        printf("  malloc calls: %ld\n", malloc_calls);
-        printf("  free calls: %ld\n", free_calls);
+        printf("  malloc calls: %llu\n", malloc_calls);
+        printf("  free calls: %llu\n", free_calls);
     }
 
     if (malloc_calls != free_calls) {
         couleurs_set(STYLE_BOLD, FG_BRIGHT_RED, BG_BRIGHT_WHITE);
-        printf("ATTENTION : Le nombre d'allocations differe du nombre de desallocations !\n");
+        printf("ATTENTION : Le nombre d'allocations (%llu) differe du nombre de desallocations (%llu) !\n", malloc_calls,
+               free_calls);
     }
     couleurs_reset();
 
