@@ -28,8 +28,8 @@ void tests() {
 
 int main(int argc, char **argv) {
     // tests();
-    chatBot("bd_complete.txt");
-    return 0;
+    //chatBot("bd_complete.txt");
+    //return 0;
 
     if (argc != 2) {
         fprintf(stderr, "Usage : ./ChatBotV2 <nom fichier donnees>\n");
