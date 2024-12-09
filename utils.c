@@ -42,9 +42,18 @@ char *utils_chaine_tailler(char *chaine) {
         int start_index = -1;
         while (isspace(chaine[0])) {
             start_index++;
-            if (!isspace(chaine[start_index]))
-                chaine = chaine + start_index;
+            if (!isspace(chaine[start_index])) {
+                // On bouge toute la chaine vers la gauche
+                for (int i = 0; i <= length - start_index; i++) {
+                    chaine[i] = chaine[i + start_index];
+                }
+            }
         }
+
+        // Si on a pas passe par la while, on doit mettre start_index a 0
+        if (start_index == -1)
+            start_index = 0;
+
         for (int end_index = length - start_index - 1; isspace(chaine[end_index]) && end_index >= 0; end_index--) {
             chaine[end_index] = 0;
         }
@@ -89,17 +98,14 @@ void utils_chaine_decouper(char *ligne, char *expression, char *definition, cons
                 const int longueur_expression = index + 1;
                 const int longueur_definition = (length - (index + 2)) + 1;
 
-                // // Si l'espace de stockage dans expression ou definition est trop petit, annuler le stockage pour eviter
-                // // de corrompre d'autres donnees(0xC000000005) | On utilise strictement plus grand pour pouvoir stocker le \0 a la fin
-                // if ((strlen(expression) > longueur_expression) && (strlen(definition) > longueur_definition)) {
                 for (int i = 0; i < longueur_expression; i++)
                     expression[i] = ligne[i];
                 expression[longueur_expression] = 0; // Inserer le 0 apres le string
+                expression = utils_chaine_tailler(expression);
                 for (int i = 0; i < longueur_definition; i++)
                     definition[i] = ligne[i + (longueur_expression + 1)]; // l'expression en paranthese est l'offset
                 definition[longueur_definition] = 0; // Inserer le 0 apres le string
-                // } else
-                //     printf("ERROR: DEBUG: Trop peu d'espace dans le pointeur expression donnee a la fonction \"utils_chaine_decouper\"\n");
+                definition = utils_chaine_tailler(definition);
             }
         }
     }
@@ -196,7 +202,7 @@ void utils_test() {
 
     //  test utils_fichier_ligne_suivante
     char lignes[2][MAX_CHAINE];
-    strcpy(lignes[0], "test:Ceci est un fichier de test.");
+    strcpy(lignes[0], "test   :   Ceci est un fichier de test.");
     strcpy(lignes[1], "chaine  de caracteres:Une suite de caracteres terminee par le caractere '\\0'.");
     int nb = 0;
     char *ligne;
@@ -207,8 +213,8 @@ void utils_test() {
 
     //  utils_chaine_decouper
     char *decoupes[][2] = {
-            {"test",                  "Ceci est un fichier de test."},
-            {"chaine  de caracteres", "Une suite de caracteres terminee par le caractere '\\0'."}
+        {"test", "Ceci est un fichier de test."},
+        {"chaine  de caracteres", "Une suite de caracteres terminee par le caractere '\\0'."}
     };
     char mot_clef[MAX_CHAINE];
     char definition[MAX_CHAINE];
@@ -220,10 +226,10 @@ void utils_test() {
 
     //  test utils_chaine_premier_mot
     char *expressions[][2] = {
-            {"langage",       "langage"},
-            {"",              ""},
-            {"bit de parite", "bit"},
-            {"serveur DNS",   "serveur"}
+        {"langage", "langage"},
+        {"", ""},
+        {"bit de parite", "bit"},
+        {"serveur DNS", "serveur"}
     };
     for (int i = 0; i < sizeof(expressions) / sizeof(expressions[0]); i++) {
         utils_chaine_premier_mot(expressions[i][0], buffer);

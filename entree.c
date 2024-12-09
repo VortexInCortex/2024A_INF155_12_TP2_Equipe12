@@ -27,7 +27,7 @@ struct s_entree {
 t_entree *t_entree_creer(const char *mot) {
 	t_entree *entree = (t_entree *) malloc(sizeof(t_entree));
 
-	entree->mot = (char *) malloc(sizeof(mot));
+	entree->mot = (char *) malloc(strlen(mot) + 1);
 	strcpy(entree->mot, mot);
 
 	entree->liste = t_liste_creer_vide();
@@ -42,7 +42,7 @@ void t_entree_liberer(t_entree *entree) {
 }
 
 void t_entree_afficher(const t_entree *entree) {
-	printf("%s", entree->mot);
+	printf("[%s] : ", entree->mot);
 	t_liste_afficher(entree->liste);
 }
 
@@ -56,7 +56,7 @@ void t_entree_chercher(t_entree *entree, const char *question, const char **expr
 }
 
 void t_entree_ajouter(t_entree *entree, const char *expression, const char *definition) {
-	t_liste_ajouter(entree->liste, expression, definition);
+	entree->liste = t_liste_ajouter(entree->liste, expression, definition);
 }
 
 void t_entree_ecrire_fichier(FILE *fichier, const t_entree *entree) {
@@ -65,56 +65,61 @@ void t_entree_ecrire_fichier(FILE *fichier, const t_entree *entree) {
 }
 
 void t_entree_test() {
-    printf("------------------------ TEST ENTREE ------------------------\n");
+	printf("------------------------ TEST ENTREE ------------------------\n");
 
-    //  t_entree_creer
-    t_entree *entree = t_entree_creer("protocole");
+	//  t_entree_creer
+	t_entree *entree = t_entree_creer("protocole");
 
-    //  t_entree_ajouter
-    entree->liste = t_liste_ajouter(entree->liste, "protocole de communication", "def. du prot de comm.");
-    entree->liste = t_liste_ajouter(entree->liste, "protocole", "def. de protocole.");
+	//  t_entree_ajouter
+	entree->liste = t_liste_ajouter(entree->liste, "protocole de communication", "def. du prot de comm.");
+	entree->liste = t_liste_ajouter(entree->liste, "protocole", "def. de protocole.");
 
-    //  t_entree_afficher
-    char *nom_fichier_test = "../_t_entree_test.txt";
-    utils_stdout_vers_fichier(nom_fichier_test);
-    t_entree_afficher(entree);
-    utils_stdout_vers_fichier(NULL);
-    char *lignes1[] = {
-            "[protocole] : protocole : def. de protocole. - protocole de communication : def. du prot de comm.\n"};
-    utils_verifier_fichier(nom_fichier_test, lignes1, 1);
+	//  t_entree_afficher
+	char *nom_fichier_test = "../_t_entree_test.txt";
+	utils_stdout_vers_fichier(nom_fichier_test);
+	t_entree_afficher(entree);
+	utils_stdout_vers_fichier(NULL);
+	setvbuf(stdout, NULL, _IONBF, BUFSIZ);
 
-    //  sans redirection
-//    printf("Obtenu  : ");
-//    t_entree_afficher(entree);
-//    printf("Attendu : [protocole] : protocole : def. de protocole. - protocole de communication : def. du prot de comm.\n");
+	char *lignes1[] = {
+		"[protocole] : protocole : def. de protocole. - protocole de communication : def. du prot de comm.\n"
+	};
+	utils_verifier_fichier(nom_fichier_test, lignes1, 1);
 
-    //  t_entree_get_mot
-    assert(strcmp(t_entree_get_mot(entree), "protocole") == 0);
+	//  sans redirection
+	// printf("Obtenu  : ");
+	// t_entree_afficher(entree);
+	// printf(
+	// 	"Attendu : [protocole] : protocole : def. de protocole. - protocole de communication : def. du prot de comm.\n");
 
-    //  t_entree_chercher
-    const char *expression, *definition;
-    t_entree_chercher(entree, "Qu'est-ce qu'un protocole en technologie de l'information ?", &expression, &definition);
-    assert(strcmp(expression, "protocole") == 0);
-    assert(strcmp(definition, "def. de protocole.") == 0);
+	//  t_entree_get_mot
+	assert(strcmp(t_entree_get_mot(entree), "protocole") == 0);
 
-    t_entree_chercher(entree, "C'est quoi un protocole de communication en informatique ?", &expression, &definition);
-    assert(strcmp(expression, "protocole de communication") == 0);
-    assert(strcmp(definition, "def. du prot de comm.") == 0);
+	//  t_entree_chercher
+	const char *expression, *definition;
+	t_entree_chercher(entree, "Qu'est-ce qu'un protocole en technologie de l'information ?", &expression, &definition);
+	assert(strcmp(expression, "protocole") == 0);
+	assert(strcmp(definition, "def. de protocole.") == 0);
 
-    //  t_entree_ecrire_fichier
-    //  - creation fichier temporaire
-    FILE *fichier = fopen(nom_fichier_test, "w");
-    t_entree_ecrire_fichier(fichier, entree);
-    fclose(fichier);
+	t_entree_chercher(entree, "C'est quoi un protocole de communication en informatique ?", &expression, &definition);
+	assert(strcmp(expression, "protocole de communication") == 0);
+	assert(strcmp(definition, "def. du prot de comm.") == 0);
 
-    //  - verification du fichier
-    char *lignes2[] = {"protocole : def. de protocole.\n", "protocole de communication : def. du prot de comm.\n"};
-    utils_verifier_fichier(nom_fichier_test, lignes2, 2);
+	//  t_entree_ecrire_fichier
+	//  - creation fichier temporaire
+	FILE *fichier = fopen(nom_fichier_test, "w");
+	t_entree_ecrire_fichier(fichier, entree);
+	fclose(fichier);
 
-    //  t_entree_liberer
-    t_entree_liberer(entree);
+	//  - verification du fichier
+	char *lignes2[] = {"protocole : def. de protocole.\n", "protocole de communication : def. du prot de comm.\n"};
+	utils_verifier_fichier(nom_fichier_test, lignes2, 2);
 
-    assert(mon_rapport(false) == 0);
+	//  t_entree_liberer
+	t_entree_liberer(entree);
 
-    printf("TEST entree : OK\n");
+	assert(mon_rapport(false) == 0);
+
+	printf("TEST entree : OK\n");
+	fflush(stdout);
 }

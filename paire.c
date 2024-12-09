@@ -34,8 +34,7 @@ t_paire *t_paire_creer(const char *expression, const char *definition) {
 		fprintf(stderr, "ERROR: DEBUG: Couldn't allocate paire\n");
 		// ReSharper disable once CppDeclarationHidesLocal
 		t_paire *paire = NULL;
-	}
-	else {
+	} else {
 		size_t exp_len = strlen(expression);
 		size_t exp_def = strlen(definition);
 
@@ -59,7 +58,7 @@ void t_paire_liberer(t_paire *paire) {
 }
 
 void t_paire_afficher(const t_paire *paire) {
-	printf("%s : %s \n", paire->expression, paire->definition);
+	printf("%s : %s", paire->expression, paire->definition);
 }
 
 const char *t_paire_get_expression(const t_paire *paire) {
@@ -92,71 +91,73 @@ void t_paire_ecrire_fichier(FILE *fichier, t_paire *paire) {
 }
 
 void t_paire_test() {
-    printf("------------------------ TEST PAIRE ------------------------\n");
+	printf("------------------------ TEST PAIRE ------------------------\n");
 
-    //  t_paire_creer
-    t_paire *paire1 = t_paire_creer("expression simple",
-                                    "Definition de cette expression simple.");
-    assert(strcmp(paire1->expression, "expression simple") == 0);
-    assert(paire1->longueur == 17);
-    assert(strcmp(paire1->definition, "Definition de cette expression simple.") == 0);
+	//  t_paire_creer
+	t_paire *paire1 = t_paire_creer("expression simple",
+	                                "Definition de cette expression simple.");
+	assert(strcmp(paire1->expression, "expression simple") == 0);
+	assert(paire1->longueur == 17);
+	assert(strcmp(paire1->definition, "Definition de cette expression simple.") == 0);
 
-    t_paire *paire2 = t_paire_creer("protocole de communication",
-                                    "Specification de plusieurs regles pour un type de communication particulier.");
-    assert(strcmp(paire2->expression, "protocole de communication") == 0);
-    assert(paire2->longueur == 26);
-    assert(strcmp(paire2->definition, "Specification de plusieurs regles pour un type de communication particulier.") ==
-           0);
+	t_paire *paire2 = t_paire_creer("protocole de communication",
+	                                "Specification de plusieurs regles pour un type de communication particulier.");
+	assert(strcmp(paire2->expression, "protocole de communication") == 0);
+	assert(paire2->longueur == 26);
+	assert(strcmp(paire2->definition, "Specification de plusieurs regles pour un type de communication particulier.") ==
+		0);
 
-    //  t_paire_afficher
-    //  - redirection de stdout dans un fichier temporaire
-    char *nom_fichier_test = "../_t_paire_test.txt";
-    utils_stdout_vers_fichier(nom_fichier_test);
-    t_paire_afficher(paire1);
-    utils_stdout_vers_fichier(NULL);
+	//  t_paire_afficher
+	//  - redirection de stdout dans un fichier temporaire
+	char *nom_fichier_test = "../_t_paire_test.txt";
+	utils_stdout_vers_fichier(nom_fichier_test);
+	t_paire_afficher(paire1);
+	utils_stdout_vers_fichier(NULL);
 
-    //  - test du fichier
-    char *lignes1[] = {"expression simple : Definition de cette expression simple."};
-    utils_verifier_fichier(nom_fichier_test, lignes1, 1);
+	//  - test du fichier
+	char *lignes1[] = {"expression simple : Definition de cette expression simple."};
+	utils_verifier_fichier(nom_fichier_test, lignes1, 1);
 
-    //  sans redirection
-//    printf("Obtenu  : ");
-//    t_paire_afficher(paire1);
-//    printf("\n");
-//    printf("Attendu : expression simple : Definition de cette expression simple.\n");
+	// sans redirection
+	// printf("Obtenu  : ");
+	// t_paire_afficher(paire1);
+	// printf("\n");
+	// printf("Attendu : expression simple : Definition de cette expression simple.\n");
 
-    //  t_paire_get_expression
-    assert(strcmp(t_paire_get_expression(paire1), "expression simple") == 0);
+	//  t_paire_get_expression
+	assert(strcmp(t_paire_get_expression(paire1), "expression simple") == 0);
 
-    //  t_paire_get_longueur
-    assert(t_paire_get_longueur(paire1) == 17);
+	//  t_paire_get_longueur
+	assert(t_paire_get_longueur(paire1) == 17);
 
-    //  t_paire_get_definition
-    assert(strcmp(t_paire_get_definition(paire1), "Definition de cette expression simple.") == 0);
+	//  t_paire_get_definition
+	assert(strcmp(t_paire_get_definition(paire1), "Definition de cette expression simple.") == 0);
 
-    //  t_paire_contient
-    assert(!t_paire_contient(paire1, "test"));
-    assert(t_paire_contient(paire1, "Voici une expression simple, tres simple..."));
-    assert(!t_paire_contient(paire2, "A quoi sert un bit en informatique ?"));
-    assert(t_paire_contient(paire2, "Qu'est-ce qu'un protocole de communication ?"));
+	//  t_paire_contient
+	assert(!t_paire_contient(paire1, "test"));
+	assert(t_paire_contient(paire1, "Voici une expression simple, tres simple..."));
+	assert(!t_paire_contient(paire2, "A quoi sert un bit en informatique ?"));
+	assert(t_paire_contient(paire2, "Qu'est-ce qu'un protocole de communication ?"));
 
-    //  t_paire_ecrire_fichier
-    //  - creation d'un fichier de test
-    FILE *fichier = fopen(nom_fichier_test, "w");
-    t_paire_ecrire_fichier(fichier, paire1);
-    t_paire_ecrire_fichier(fichier, paire2);
-    fclose(fichier);
+	//  t_paire_ecrire_fichier
+	//  - creation d'un fichier de test
+	FILE *fichier = fopen(nom_fichier_test, "w");
+	t_paire_ecrire_fichier(fichier, paire1);
+	t_paire_ecrire_fichier(fichier, paire2);
+	fclose(fichier);
 
-    //  - validations sur le fichier
-    char *lignes2[] = {"expression simple : Definition de cette expression simple.\n",
-                       "protocole de communication : Specification de plusieurs regles pour un type de communication particulier.\n"};
-    utils_verifier_fichier(nom_fichier_test, lignes2, 2);
+	//  - validations sur le fichier
+	char *lignes2[] = {
+		"expression simple : Definition de cette expression simple.\n",
+		"protocole de communication : Specification de plusieurs regles pour un type de communication particulier.\n"
+	};
+	utils_verifier_fichier(nom_fichier_test, lignes2, 2);
 
-    //  t_paire_liberer
-    t_paire_liberer(paire1);
-    t_paire_liberer(paire2);
+	//  t_paire_liberer
+	t_paire_liberer(paire1);
+	t_paire_liberer(paire2);
 
-    assert(mon_rapport(false) == 0);
+	assert(mon_rapport(false) == 0);
 
-    printf("TEST paire : OK\n");
+	printf("TEST paire : OK\n");
 }

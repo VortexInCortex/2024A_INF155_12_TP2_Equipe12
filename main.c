@@ -27,16 +27,16 @@ void tests() {
 }
 
 int main(int argc, char **argv) {
-    tests();
-//    chatBot("bd_complete.txt");
+    // tests();
+    chatBot("bd_complete.txt");
     return 0;
 
     if (argc != 2) {
         fprintf(stderr, "Usage : ./ChatBotV2 <nom fichier donnees>\n");
         fprintf(stderr, "        ./ChatBotV2 -debug\n");
         fprintf(
-                stderr,
-                "NOTE: Le fichier de donnees doit se trouver dans le repertoire parent du repertoire ou se trouve l'executable.");
+            stderr,
+            "NOTE: Le fichier de donnees doit se trouver dans le repertoire parent du repertoire ou se trouve l'executable.");
         exit(-1);
     }
 
